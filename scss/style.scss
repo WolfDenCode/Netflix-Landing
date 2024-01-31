@@ -37,7 +37,7 @@ a {
   align-items: center;
   width: 100%;
   height: 80px;
-  padding: 1rem;
+  padding: 1rem 2rem;
   font-size: larger;
 
   background: linear-gradient(
@@ -116,6 +116,17 @@ a {
   .card {
     height: 150px;
     width: 15vw;
-    background-color: $dark-color;
+    border-radius: 4%;
+    background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    box-shadow: 0 0 10px #000000;
+    transition: transform ease-in-out 0.2s;
+  }
+
+  .selected {
+    transform: translateY(-10px);
   }
 }
