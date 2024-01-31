@@ -90,11 +90,12 @@ sizes = {
   xl: 1440,
 };
 
-if (window.innerWidth <= sizes.sm) {
+const container = document.querySelector(".container");
+if (container.clientWidth <= sizes.sm) {
   cardsVisible = 2;
-} else if (window.innerWidth <= sizes.md) {
+} else if (container.clientWidth <= sizes.md) {
   cardsVisible = 3;
-} else if (window.innerWidth <= sizes.lg) {
+} else if (container.clientWidth <= sizes.lg) {
   cardsVisible = 4;
 } else {
   cardsVisible = 5;
@@ -105,7 +106,7 @@ cards.forEach((card, index) => {
 });
 toggleSelected(cards[1]);
 
-let visibleCards = [1, 2, 3, 4, 5];
+// let visibleCards = [1, 2, 3, 4, 5];
 let currentIndex = 0;
 let prevIndex;
 
