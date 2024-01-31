@@ -17,7 +17,7 @@ a {
   justify-content: space-between;
   align-items: start;
   height: 100vh;
-  background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
+  background-image: url("");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -74,7 +74,7 @@ a {
   color: #000000;
 }
 .show-info .buttons :nth-child(2) {
-  background-color: rgba(69, 66, 66, 0.7450980392);
+  background-color: rgba(69, 66, 66, 0.368627451);
   color: white;
 }
 .show-info .buttons :nth-child(2) i {
@@ -90,6 +90,10 @@ a {
   justify-content: space-evenly;
   align-items: center;
   padding: 0.2rem;
+}
+
+.slider-container {
+  position: relative;
 }
 
 .slider {
@@ -115,10 +119,32 @@ a {
   background-color: rgba(0, 0, 0, 0.3490196078);
 }
 
+.slider-button, #right-button, #left-button {
+  position: absolute;
+  height: 150px;
+  background-color: rgba(46, 45, 45, 0.4666666667);
+  border: none;
+  z-index: 10;
+  top: 75.5%;
+  margin: 1rem 0;
+}
+
+#left-button {
+  left: 0;
+}
+
+#right-button {
+  right: 0;
+}
+
 .selected {
   transform: translateY(-10px);
   box-shadow: 0 0 10px #504c4c;
   background-blend-mode: normal;
+}
+
+.sliding-transition {
+  transition: transform 0.5s ease-in-out;
 }
 
 @media (max-width: 1025px) {
