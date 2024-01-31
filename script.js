@@ -8,6 +8,8 @@ function toggleSelected(card) {
 
   // Add 'selected' class to the clicked card
   card.classList.add("selected");
+  document.querySelector(".container").style.backgroundImage =
+    card.style.backgroundImage;
 }
 
 const filmsData = [
@@ -88,9 +90,6 @@ sizes = {
   xl: 1440,
 };
 
-cards.forEach((card, index) => {
-  card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
-});
 if (window.innerWidth <= sizes.sm) {
   cardsVisible = 2;
 } else if (window.innerWidth <= sizes.md) {
@@ -100,6 +99,11 @@ if (window.innerWidth <= sizes.sm) {
 } else {
   cardsVisible = 5;
 }
+
+cards.forEach((card, index) => {
+  card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
+});
+toggleSelected(cards[1]);
 
 let visibleCards = [1, 2, 3, 4, 5];
 let currentIndex = 0;
