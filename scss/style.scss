@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto&display=swap");
-
-$light-color: #ffff;
-$dark-color: #000000;
-$primary-transparent-color: #000000;
-$secondary-transparent-color: #1818180c;
-$primary-button-color: #ece5e5;
-$secondary-button-color: #454242be;
+@import "config";
 
 body {
   margin: 0;
@@ -24,6 +18,7 @@ a {
   justify-content: space-between;
   align-items: start;
   height: 100vh;
+
   background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
   background-repeat: no-repeat;
   background-position: center;
@@ -113,20 +108,26 @@ a {
   gap: 5px;
 
   margin: 1rem 0;
-  .card {
-    height: 150px;
-    width: 15vw;
-    border-radius: 4%;
-    background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    cursor: pointer;
-    box-shadow: 0 0 10px #000000;
-    transition: transform ease-in-out 0.2s;
-  }
-
-  .selected {
-    transform: translateY(-10px);
-  }
+  padding: 0 3rem;
 }
+.card {
+  height: 150px;
+  width: 15vw;
+  border-radius: 4px;
+  background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  box-shadow: 0 0 10px #000000;
+  transition: ease-in-out 0.2s;
+  background-blend-mode: overlay;
+  background-color: #00000059;
+}
+
+.selected {
+  transform: translateY(-10px);
+  box-shadow: 0 0 10px #504c4c;
+  background-blend-mode: normal;
+}
+@import "media";
