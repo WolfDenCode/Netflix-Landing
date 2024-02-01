@@ -12,6 +12,25 @@ function toggleSelected(card) {
     card.style.backgroundImage;
 }
 
+function CheckScreenSize() {
+  sizes = {
+    sm: 425,
+    md: 768,
+    lg: 1024,
+    xl: 1440,
+  };
+
+  const container = document.querySelector(".container");
+  if (container.clientWidth <= sizes.sm) {
+    cardsVisible = 2;
+  } else if (container.clientWidth <= sizes.md) {
+    cardsVisible = 3;
+  } else if (container.clientWidth <= sizes.lg) {
+    cardsVisible = 4;
+  } else {
+    cardsVisible = 5;
+  }
+}
 const filmsData = [
   {
     title: "Money Heist",
@@ -72,49 +91,46 @@ const filmsData = [
     imageUrl:
       "https://static.cdprojektred.com/cms.cdprojektred.com/16x9_big/45d16cac8654b4ebc86ee8c1e4e9f13e5b47e6d0-1280x720.jpg",
   },
+  {
+    title: "Better Call Saul",
+    description: "description",
+    imageUrl:
+      "https://lh3.googleusercontent.com/proxy/i2GK0aM17cXxyQaGhXy20jg5KqCiKn1M_sm6cmB5fX0OgxesQ8YIfLh48xg8-ChotHTqTprVTLORgR9LjVkIfaP8PkYYge9Aw1Mz0a54hTBf1xrjSQw",
+  },
+  {
+    title: "Narcos",
+    description: "description",
+    imageUrl:
+      "https://www.martin-strobel.com/wp/wp-content/uploads/strobel_martin_netflix_narcos_thumbnail_1080.jpg",
+  },
+  {
+    title: "Cyberpunk: Edgerunners",
+    description: "description",
+    imageUrl:
+      "https://static.cdprojektred.com/cms.cdprojektred.com/16x9_big/45d16cac8654b4ebc86ee8c1e4e9f13e5b47e6d0-1280x720.jpg",
+  },
 ];
 
 const slider = document.querySelector(".slider");
-const cards = document.querySelectorAll(".card");
+let cards = document.querySelectorAll(".card");
 const totalImages = Object.keys(cards).length;
 const cardWidth = cards[1].getBoundingClientRect().x;
-
-const leftButton = document.querySelector("#left-button");
-const rightButton = document.querySelector("#right-button");
-
 let cardsVisible = 5;
-sizes = {
-  sm: 425,
-  md: 768,
-  lg: 1024,
-  xl: 1440,
-};
 
-const container = document.querySelector(".container");
-if (container.clientWidth <= sizes.sm) {
-  cardsVisible = 2;
-} else if (container.clientWidth <= sizes.md) {
-  cardsVisible = 3;
-} else if (container.clientWidth <= sizes.lg) {
-  cardsVisible = 4;
-} else {
-  cardsVisible = 5;
-}
-
+//Set Cards to their respective image and set the slected card as well
 cards.forEach((card, index) => {
   card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
 });
 toggleSelected(cards[1]);
 
-// let visibleCards = [1, 2, 3, 4, 5];
-let currentIndex = 0;
-let prevIndex;
+function slideLeft() {
+  //   slider.style.transform = `translateX(-${cardWidth * cardsVisible}px)`;
 
-leftButton.addEventListener("click", () => {
-  prevIndex = currentIndex;
-  currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-  slider.style.transform = `translateX(-${cardWidth * cardsVisible}px)`;
-  slider.insertBefore(cards[currentIndex], slider.firstChild);
+  for (i = 0; i < cardsVisible; i++) {
+    slider.insertBefore(cards[totalImages - 1 - i], slider.firstChild);
+    console.log(cards[i]);
+  }
+  cards = document.querySelectorAll(".card");
 
   setTimeout(() => {
     slider.style.transform = "";
@@ -124,19 +140,20 @@ leftButton.addEventListener("click", () => {
   setTimeout(() => {
     slider.classList.remove("sliding-transition");
   }, 490);
-});
+}
 
-rightButton.addEventListener("click", () => {
+function slideRight() {
   slider.classList.add("sliding-transition");
 
-  prevIndex = currentIndex;
-  currentIndex = (currentIndex + 1) % totalImages;
-
-  slider.style.transform = `translateX(-${cardWidth * cardsVisible}px)`;
+  for (i = 0; i < cardsVisible; i++) {
+    slider.appendChild(cards[i]);
+    console.log(cards[i]);
+  }
+  cards = document.querySelectorAll(".card");
+  //   slider.style.transform = `translateX(-${cardWidth * cardsVisible}px)`;
 
   setTimeout(() => {
-    slider.appendChild(cards[prevIndex]);
     slider.classList.remove("sliding-transition");
     slider.style.transform = "";
   }, 500);
-});
+}
