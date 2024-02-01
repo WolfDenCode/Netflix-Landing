@@ -122,38 +122,66 @@ cards.forEach((card, index) => {
   card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
 });
 toggleSelected(cards[1]);
+CheckScreenSize();
 
 function slideLeft() {
-  //   slider.style.transform = `translateX(-${cardWidth * cardsVisible}px)`;
-
-  for (i = 0; i < cardsVisible; i++) {
-    slider.insertBefore(cards[totalImages - 1 - i], slider.firstChild);
-    console.log(cards[i]);
-  }
   cards = document.querySelectorAll(".card");
 
-  setTimeout(() => {
-    slider.style.transform = "";
-    slider.classList.add("sliding-transition");
-  }, 10);
+  const initialPositions = [];
+  cards.forEach((card) => {
+    initialPositions.push(card.getBoundingClientRect());
+  });
 
-  setTimeout(() => {
-    slider.classList.remove("sliding-transition");
-  }, 490);
+  for (i = cards.length - 1; i >= cards.length - cardsVisible; i--) {
+    slider.insertBefore(cards[i], slider.firstChild);
+  }
+
+  const finalPositions = [];
+  cards.forEach((card) => {
+    finalPositions.push(card.getBoundingClientRect());
+  });
+
+  cards.forEach((card, index) => {
+    const dx = initialPositions[index].x - finalPositions[index].x;
+    card.style.transition = "transform 0s";
+    card.style.transform = `translate(${dx}px)`;
+    requestAnimationFrame(() => {
+      card.style.transition = "transform 1s";
+      card.style.transform = "";
+    });
+  });
 }
 
 function slideRight() {
-  slider.classList.add("sliding-transition");
+  cards = document.querySelectorAll(".card");
 
+  // Calculate the initial position of the cards
+  const initialPositions = [];
+  cards.forEach((card) => {
+    initialPositions.push(card.getBoundingClientRect());
+  });
+
+  // Move the cards to the end of the slider
   for (i = 0; i < cardsVisible; i++) {
     slider.appendChild(cards[i]);
-    console.log(cards[i]);
   }
-  cards = document.querySelectorAll(".card");
-  //   slider.style.transform = `translateX(-${cardWidth * cardsVisible}px)`;
 
-  setTimeout(() => {
-    slider.classList.remove("sliding-transition");
-    slider.style.transform = "";
-  }, 500);
+  // Calculate the final position of the cards
+  const finalPositions = [];
+  cards.forEach((card) => {
+    finalPositions.push(card.getBoundingClientRect());
+  });
+
+  // Apply the inverted changes to play the animation
+  cards.forEach((card, index) => {
+    const dx = initialPositions[index].x - finalPositions[index].x;
+    console.log(dx, initialPositions[index].x, finalPositions[index].x);
+    card.style.transition = "transform 0s";
+    card.style.transform = `translate(${dx}px)`;
+
+    requestAnimationFrame(() => {
+      card.style.transition = "transform 1s";
+      card.style.transform = "";
+    });
+  });
 }

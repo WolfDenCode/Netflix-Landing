@@ -143,10 +143,6 @@ a {
   background-blend-mode: normal;
 }
 
-.sliding-transition {
-  transition: transform 0.5s ease-in-out;
-}
-
 @media (max-width: 1025px) {
   .slider {
     margin: 1rem -7rem;

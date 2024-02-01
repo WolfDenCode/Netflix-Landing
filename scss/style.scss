@@ -111,6 +111,7 @@ a {
 
   margin: 1rem -10rem;
 }
+
 .card {
   height: 150px;
   width: 17vw;
@@ -151,7 +152,5 @@ a {
   box-shadow: 0 0 10px #504c4c;
   background-blend-mode: normal;
 }
-.sliding-transition {
-  transition: transform 0.5s ease-in-out;
-}
+
 @import "media";
