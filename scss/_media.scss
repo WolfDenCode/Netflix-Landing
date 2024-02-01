@@ -21,6 +21,14 @@
   .card {
     width: 40vw;
   }
+  .show-info {
+    width: 80%;
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    h1 {
+      margin: 0.5rem 0;
+    }
+  }
 }
 @media (max-width: 351px) {
   .slider {

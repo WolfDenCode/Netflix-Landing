@@ -28,9 +28,8 @@
         </ul>
       </div>
       <div class="show-info">
-        <div>
-          <h1>Show Title</h1>
-        </div>
+        <h1>Show Title</h1>
+
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -43,6 +42,14 @@
         </div>
       </div>
 
+      <div class="slider-buttons">
+        <button id="left-button" class="slider-button" onclick="slideLeft()">
+          <i class="fa-solid fa-xl fa-chevron-left"></i>
+        </button>
+        <button id="right-button" class="slider-button" onclick="slideRight()">
+          <i class="fa-solid fa-xl fa-chevron-right"></i>
+        </button>
+      </div>
       <div class="slider">
         <div class="card" onclick="toggleSelected(this)"></div>
         <div class="card" onclick="toggleSelected(this)"></div>
@@ -58,13 +65,8 @@
         <div class="card" onclick="toggleSelected(this)"></div>
         <div class="card" onclick="toggleSelected(this)"></div>
       </div>
-      <button id="left-button" onclick="slideLeft()">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button id="right-button" onclick="slideRight()">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>

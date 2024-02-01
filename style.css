@@ -3,7 +3,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans";
-  overflow-x: hidden;
 }
 
 a {
@@ -14,15 +13,15 @@ a {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: start;
+  overflow-x: hidden;
   height: 100vh;
   background-image: url("");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-blend-mode: overlay;
-  background-color: rgba(17, 16, 16, 0.462745098);
+  background-color: rgba(17, 16, 16, 0.768627451);
 }
 
 .navbar {
@@ -53,8 +52,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
-  padding: 2.5rem;
+  padding: 1.5rem 2.5rem;
   width: 60%;
   color: white;
 }
@@ -92,21 +90,19 @@ a {
   padding: 0.2rem;
 }
 
-.slider-container {
-  position: relative;
-}
-
 .slider {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  height: 200px;
   gap: 5px;
   margin: 1rem -10rem;
 }
 
 .card {
   height: 150px;
-  width: 17vw;
+  width: 17rem;
   border-radius: 4px;
   background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
   background-repeat: no-repeat;
@@ -119,22 +115,29 @@ a {
   background-color: rgba(0, 0, 0, 0.3490196078);
 }
 
-.slider-button, #right-button, #left-button {
-  position: absolute;
-  height: 150px;
-  background-color: rgba(46, 45, 45, 0.4666666667);
+.slider-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(243, 243, 243, 0.4666666667);
   border: none;
   z-index: 10;
-  top: 75.5%;
-  margin: 1rem 0;
+  border-radius: 40px;
 }
 
-#left-button {
-  left: 0;
-}
-
-#right-button {
-  right: 0;
+.slider-button:hover {
+  background-color: rgba(0, 0, 0, 0.4666666667);
+  color: white;
 }
 
 .selected {
@@ -165,6 +168,14 @@ a {
   }
   .card {
     width: 40vw;
+  }
+  .show-info {
+    width: 80%;
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+  }
+  .show-info h1 {
+    margin: 0.5rem 0;
   }
 }
 @media (max-width: 351px) {
