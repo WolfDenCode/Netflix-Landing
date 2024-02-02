@@ -116,14 +116,34 @@ let cards = document.querySelectorAll(".card");
 const totalImages = Object.keys(cards).length;
 const cardWidth = cards[1].getBoundingClientRect().x;
 let cardsVisible = 5;
-
-//Set Cards to their respective image and set the slected card as well
+let selectIndex = 1;
+//Set Cards to their respective image and set the selected card as well
 cards.forEach((card, index) => {
   card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
 });
 toggleSelected(cards[1]);
 CheckScreenSize();
 
+//Start The Select Timer
+let selectTimer = setInterval(() => {
+  selectIndex++;
+  if (selectIndex > cardsVisible) {
+    selectIndex = 1;
+  }
+  toggleSelected(cards[selectIndex]);
+}, 10000);
+
+function resetSelectTimer() {
+  clearInterval(selectTimer);
+
+  selectTimer = setInterval(() => {
+    selectIndex++;
+    if (selectIndex > cardsVisible) {
+      selectIndex = 1;
+    }
+    toggleSelected(cards[selectIndex]);
+  }, 10000);
+}
 function slideLeft() {
   cards = document.querySelectorAll(".card");
 
@@ -140,7 +160,8 @@ function slideLeft() {
   cards.forEach((card) => {
     finalPositions.push(card.getBoundingClientRect());
   });
-
+  toggleSelected[cards[1]];
+  resetSelectTimer();
   cards.forEach((card, index) => {
     const dx = initialPositions[index].x - finalPositions[index].x;
     card.style.transition = "transform 0s";
@@ -171,7 +192,8 @@ function slideRight() {
   cards.forEach((card) => {
     finalPositions.push(card.getBoundingClientRect());
   });
-
+  toggleSelected[cards[1]];
+  resetSelectTimer();
   // Apply the inverted changes to play the animation
   cards.forEach((card, index) => {
     const dx = initialPositions[index].x - finalPositions[index].x;
