@@ -55,6 +55,9 @@ a {
     li {
       list-style: none;
     }
+    a:hover {
+      color: #ababab;
+    }
   }
 }
 
@@ -64,6 +67,7 @@ a {
   justify-content: center;
 
   padding: 1.5rem $left-padding;
+
   width: 60%;
 
   color: $light-color;
@@ -82,12 +86,25 @@ a {
       background-color: $primary-button-color;
       color: $dark-color;
     }
+
+    :nth-child(1):hover {
+      background-color: #7c7c7ccf;
+      i {
+        background-color: #7c7c7ccf;
+      }
+    }
     :nth-child(2) {
       background-color: $secondary-button-color;
       color: $light-color;
       i {
         background-color: #00000000;
         color: $light-color;
+      }
+    }
+    :nth-child(2):hover {
+      background-color: darken($secondary-button-color, 40);
+      i {
+        background-color: darken($secondary-button-color, 40);
       }
     }
 
@@ -112,7 +129,7 @@ a {
 
   height: 200px;
   gap: 5px;
-
+  padding-top: 2.5rem;
   margin: 1rem -10rem;
 }
 
@@ -137,6 +154,7 @@ a {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding-top: 2.5rem;
 }
 
 .slider-button {
@@ -147,6 +165,7 @@ a {
   width: $slider-button-size;
   background-color: $slider-button-color;
   border: none;
+
   z-index: 10;
   border-radius: 40px;
 }

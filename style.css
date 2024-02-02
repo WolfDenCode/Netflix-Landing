@@ -47,6 +47,9 @@ a {
 .navbar ul li {
   list-style: none;
 }
+.navbar ul a:hover {
+  color: #ababab;
+}
 
 .show-info {
   display: flex;
@@ -71,13 +74,25 @@ a {
   background-color: #ece5e5;
   color: #000000;
 }
+.show-info .buttons :nth-child(1):hover {
+  background-color: rgba(124, 124, 124, 0.8117647059);
+}
+.show-info .buttons :nth-child(1):hover i {
+  background-color: rgba(124, 124, 124, 0.8117647059);
+}
 .show-info .buttons :nth-child(2) {
-  background-color: rgba(69, 66, 66, 0.368627451);
+  background-color: rgba(117, 114, 114, 0.368627451);
   color: white;
 }
 .show-info .buttons :nth-child(2) i {
   background-color: rgba(0, 0, 0, 0);
   color: white;
+}
+.show-info .buttons :nth-child(2):hover {
+  background-color: rgba(14, 13, 13, 0.368627451);
+}
+.show-info .buttons :nth-child(2):hover i {
+  background-color: rgba(14, 13, 13, 0.368627451);
 }
 .show-info .buttons a {
   width: 120px;
@@ -97,6 +112,7 @@ a {
   overflow-x: hidden;
   height: 200px;
   gap: 5px;
+  padding-top: 2.5rem;
   margin: 1rem -10rem;
 }
 
@@ -121,6 +137,7 @@ a {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding-top: 2.5rem;
 }
 
 .slider-button {
