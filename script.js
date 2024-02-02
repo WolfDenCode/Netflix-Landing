@@ -136,6 +136,7 @@ let selectTimer = setInterval(() => {
 function resetSelectTimer() {
   clearInterval(selectTimer);
 
+  selectIndex = 1;
   selectTimer = setInterval(() => {
     selectIndex++;
     if (selectIndex > cardsVisible) {
@@ -160,8 +161,7 @@ function slideLeft() {
   cards.forEach((card) => {
     finalPositions.push(card.getBoundingClientRect());
   });
-  toggleSelected[cards[1]];
-  resetSelectTimer();
+
   cards.forEach((card, index) => {
     const dx = initialPositions[index].x - finalPositions[index].x;
     card.style.transition = "transform 0s";
@@ -192,12 +192,11 @@ function slideRight() {
   cards.forEach((card) => {
     finalPositions.push(card.getBoundingClientRect());
   });
-  toggleSelected[cards[1]];
-  resetSelectTimer();
+
   // Apply the inverted changes to play the animation
   cards.forEach((card, index) => {
     const dx = initialPositions[index].x - finalPositions[index].x;
-    console.log(dx, initialPositions[index].x, finalPositions[index].x);
+
     card.style.transition = "transform 0s";
     card.style.transform = `translate(${dx}px)`;
 
