@@ -1,36 +1,43 @@
-function toggleSelected(card) {
-  // Remove 'selected' class from all cards in the slider
-  var slider = card.parentElement;
-  var cards = slider.getElementsByClassName("card");
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].classList.remove("selected");
-  }
+// function toggleSelected(card) {
+//   // Remove 'selected' class from all cards in the slider
+//   var slider = card.parentElement;
+//   var cards = slider.getElementsByClassName("card");
+//   for (var i = 0; i < cards.length; i++) {
+//     cards[i].classList.remove("selected");
+//   }
 
-  // Add 'selected' class to the clicked card
-  card.classList.add("selected");
-  document.querySelector(".container").style.backgroundImage =
-    card.style.backgroundImage;
-}
+//   // Add 'selected' class to the clicked card
+//   card.classList.add("selected");
 
-function CheckScreenSize() {
-  sizes = {
-    sm: 426,
-    md: 769,
-    lg: 1025,
-    xl: 1441,
-  };
+//   document.querySelector(".container").style.backgroundImage =
+//     card.style.backgroundImage;
+//   console.log(card.style.backgroundImage);
+//   let correctData = filmsData.find(
+//     (x) => `url("${x.imageUrl}")` == card.style.backgroundImage
+//   );
+//   document.getElementById("title").innerHTML = correctData.title;
+//   document.getElementById("description").innerHTML = correctData.description;
+// }
 
-  const container = document.querySelector(".container");
-  if (container.clientWidth <= sizes.sm) {
-    cardsVisible = 2;
-  } else if (container.clientWidth <= sizes.md) {
-    cardsVisible = 3;
-  } else if (container.clientWidth <= sizes.lg) {
-    cardsVisible = 4;
-  } else {
-    cardsVisible = 5;
-  }
-}
+// function CheckScreenSize() {
+//   sizes = {
+//     sm: 426,
+//     md: 769,
+//     lg: 1025,
+//     xl: 1441,
+//   };
+
+//   const container = document.querySelector(".container");
+//   if (container.clientWidth <= sizes.sm) {
+//     cardsVisible = 2;
+//   } else if (container.clientWidth <= sizes.md) {
+//     cardsVisible = 3;
+//   } else if (container.clientWidth <= sizes.lg) {
+//     cardsVisible = 4;
+//   } else {
+//     cardsVisible = 5;
+//   }
+// }
 const filmsData = [
   {
     title: "Money Heist",
@@ -39,13 +46,15 @@ const filmsData = [
   },
   {
     title: "The Witcher 3",
-    description: "description",
+    description:
+      "Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts",
     imageUrl:
       "https://thegatewayonline.ca/wp-content/uploads/2020/01/https___cdn.cnn_.com_cnnnext_dam_assets_190701125354-01-netflix-the-witcher.jpg",
   },
   {
     title: "Breaking Bad",
-    description: "description",
+    description:
+      "A high school chemistry teacher dying of cancer teams with a former student to secure his family's future by manufacturing and selling crystal meth.",
     imageUrl:
       "https://conversationsabouther.net/wp-content/uploads/2014/10/Breaking-Bad.jpg",
   },
@@ -111,27 +120,28 @@ const filmsData = [
   },
 ];
 
-const slider = document.querySelector(".slider");
-let cards = document.querySelectorAll(".card");
-const totalImages = Object.keys(cards).length;
-const cardWidth = cards[1].getBoundingClientRect().x;
-let cardsVisible = 5;
-let selectIndex = 1;
+// const slider = document.querySelector(".slider");
+// let cards = document.querySelectorAll(".card");
+// const totalImages = Object.keys(cards).length;
+// const cardWidth = cards[1].getBoundingClientRect().width;
+// let cardsVisible = 5;
+// let selectIndex = 1;
+
 //Set Cards to their respective image and set the selected card as well
-cards.forEach((card, index) => {
-  card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
-});
-toggleSelected(cards[1]);
-CheckScreenSize();
+// cards.forEach((card, index) => {
+//   card.style.backgroundImage = `url('${filmsData[index].imageUrl}')`;
+// });
+// toggleSelected(cards[1]);
+// CheckScreenSize();
 
 //Start The Select Timer
-let selectTimer = setInterval(() => {
-  selectIndex++;
-  if (selectIndex > cardsVisible) {
-    selectIndex = 1;
-  }
-  toggleSelected(cards[selectIndex]);
-}, 10000);
+// let selectTimer = setInterval(() => {
+//   selectIndex++;
+//   if (selectIndex > cardsVisible) {
+//     selectIndex = 1;
+//   }
+//   toggleSelected(cards[selectIndex]);
+// }, 10000);
 
 function resetSelectTimer() {
   clearInterval(selectTimer);
@@ -145,64 +155,7 @@ function resetSelectTimer() {
     toggleSelected(cards[selectIndex]);
   }, 10000);
 }
-function slideLeft() {
-  cards = document.querySelectorAll(".card");
 
-  const initialPositions = [];
-  cards.forEach((card) => {
-    initialPositions.push(card.getBoundingClientRect());
-  });
+function slideLeft() {}
 
-  for (i = cards.length - 1; i >= cards.length - cardsVisible; i--) {
-    slider.insertBefore(cards[i], slider.firstChild);
-  }
-
-  const finalPositions = [];
-  cards.forEach((card) => {
-    finalPositions.push(card.getBoundingClientRect());
-  });
-
-  cards.forEach((card, index) => {
-    const dx = initialPositions[index].x - finalPositions[index].x;
-    card.style.transition = "transform 0s";
-    card.style.transform = `translate(${dx}px)`;
-    requestAnimationFrame(() => {
-      card.style.transition = "transform 1s";
-      card.style.transform = "";
-    });
-  });
-}
-
-function slideRight() {
-  cards = document.querySelectorAll(".card");
-
-  // Calculate the initial position of the cards
-  const initialPositions = [];
-  cards.forEach((card) => {
-    initialPositions.push(card.getBoundingClientRect());
-  });
-
-  // Move the cards to the end of the slider
-  for (i = 0; i < cardsVisible; i++) {
-    slider.appendChild(cards[i]);
-  }
-
-  // Calculate the final position of the cards
-  const finalPositions = [];
-  cards.forEach((card) => {
-    finalPositions.push(card.getBoundingClientRect());
-  });
-
-  // Apply the inverted changes to play the animation
-  cards.forEach((card, index) => {
-    const dx = initialPositions[index].x - finalPositions[index].x;
-
-    card.style.transition = "transform 0s";
-    card.style.transform = `translate(${dx}px)`;
-
-    requestAnimationFrame(() => {
-      card.style.transition = "transform 1s";
-      card.style.transform = "";
-    });
-  });
-}
+function slideRight() {}

@@ -120,58 +120,24 @@ a {
     }
   }
 }
+// .glide {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-.slider {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-
-  height: 200px;
-  gap: 5px;
-  padding-top: 2.5rem;
-  margin: 1rem -10rem;
-}
-
-.card {
+.glide__slide {
+  margin: 20px 0;
   height: 150px;
-  width: 17rem;
+  // width: 150px;
+}
+.card {
+  height: 100%;
+  width: 100%;
   border-radius: 4px;
-  background-image: url("https://images5.alphacoders.com/131/1319528.jpeg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   cursor: pointer;
   box-shadow: 0 0 10px #000000;
   transition: ease-in-out 0.2s;
-  background-blend-mode: overlay;
-  background-color: #00000059;
-}
-
-.slider-buttons {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding-top: 2.5rem;
-}
-
-.slider-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: $slider-button-size;
-  width: $slider-button-size;
-  background-color: $slider-button-color;
-  border: none;
-
-  z-index: 10;
-  border-radius: 40px;
-}
-.slider-button:hover {
-  background-color: darken($slider-button-color, 100);
-  color: white;
 }
 
 .selected {
