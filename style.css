@@ -151,29 +151,7 @@ a {
   background-blend-mode: normal;
 }
 
-@media (max-width: 1025px) {
-  .slider {
-    margin: 1rem -7rem;
-  }
-  .card {
-    width: 20vw;
-  }
-}
-@media (max-width: 769px) {
-  .slider {
-    margin: 1rem -7rem;
-  }
-  .card {
-    width: 25vw;
-  }
-}
 @media (max-width: 426px) {
-  .slider {
-    margin: 1rem -8rem;
-  }
-  .card {
-    width: 40vw;
-  }
   .show-info {
     width: 80%;
     padding: 0 2rem;
@@ -181,13 +159,5 @@ a {
   }
   .show-info h1 {
     margin: 0.5rem 0;
-  }
-}
-@media (max-width: 351px) {
-  .slider {
-    margin: 1rem -7rem;
-  }
-  .card {
-    width: 40vw;
   }
 }
