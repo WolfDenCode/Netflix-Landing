@@ -119,6 +119,32 @@ a {
   transition: ease-in-out 0.2s;
 }
 
+.slider-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 2.5rem;
+}
+
+.slider-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(243, 243, 243, 0.4666666667);
+  border: none;
+  z-index: 10;
+  border-radius: 40px;
+}
+
+.slider-button:hover {
+  background-color: rgba(0, 0, 0, 0.4666666667);
+  color: white;
+}
+
 .selected {
   transform: translateY(-10px);
   box-shadow: 0 0 10px #504c4c;

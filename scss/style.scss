@@ -140,6 +140,32 @@ a {
   transition: ease-in-out 0.2s;
 }
 
+.slider-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 2.5rem;
+}
+
+.slider-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $slider-button-size;
+  width: $slider-button-size;
+  background-color: $slider-button-color;
+  border: none;
+
+  z-index: 10;
+  border-radius: 40px;
+}
+.slider-button:hover {
+  background-color: darken($slider-button-color, 100);
+  color: white;
+}
+
 .selected {
   transform: translateY(-10px);
   box-shadow: 0 0 10px #504c4c;
