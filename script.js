@@ -95,6 +95,7 @@ const filmsData = [
     youtubeID: "KPLWWIOCOOQ",
   },
 ];
+
 let cards = document.querySelectorAll(".card");
 let slideCount = cards.length;
 cards.forEach((card, index) => {
@@ -150,36 +151,18 @@ leftButton.addEventListener("click", stepGlideLeft);
 //If you click a card, select it
 document.querySelectorAll(".card").forEach((card, index) => {
   card.addEventListener("click", () => {
-    currentSelectIndex = index;
     toggleSelected(card);
-    resetInterval();
   });
 });
 
 toggleSelected(cards[currentSelectIndex]);
-let selectInterval = setInterval(() => {
-  currentSelectIndex + 1 >= currentIndex + glide.settings.perView
-    ? (currentSelectIndex = currentIndex)
-    : currentSelectIndex++;
-  toggleSelected(cards[currentSelectIndex]);
-}, 5000);
 
-function resetInterval() {
-  clearInterval(selectInterval);
-  selectInterval = setInterval(() => {
-    currentSelectIndex + 1 >= currentIndex + glide.settings.perView
-      ? (currentSelectIndex = currentIndex)
-      : currentSelectIndex++;
-    toggleSelected(cards[currentSelectIndex]);
-  }, 5000);
-}
 function stepGlideRight() {
   currentIndex = (currentIndex + glide.settings.perView) % slideCount;
 
   glide.go(`=${currentIndex}`);
   currentSelectIndex = currentIndex;
   toggleSelected(cards[currentSelectIndex]);
-  resetInterval();
 }
 
 function stepGlideLeft() {
@@ -189,7 +172,6 @@ function stepGlideLeft() {
   glide.go(`=${currentIndex}`);
   currentSelectIndex = currentIndex;
   toggleSelected(cards[currentSelectIndex]);
-  resetInterval();
 }
 
 function toggleSelected(card) {
