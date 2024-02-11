@@ -1,15 +1,45 @@
+@media (max-width: 1025px) {
+  iframe {
+    top: -5%;
+  }
+  .navbar {
+    margin-bottom: 10rem;
+  }
+  .show-info {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+}
+@media (max-width: 769px) {
+  iframe {
+    top: -10%;
+  }
+  .navbar {
+    margin-bottom: 10rem;
+  }
+  .show-info {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
 @media (max-width: 426px) {
   .show-info {
     width: 80%;
-    padding: 0 2rem;
+    padding: 0 1rem;
     padding-bottom: 1rem;
     h1 {
       margin: 0.5rem 0;
     }
+    p {
+      display: none;
+    }
+  }
+  iframe {
+    top: -20%;
+    left: 0;
+  }
+  .navbar {
+    margin-bottom: 17rem;
   }
 }
-
-//6 és 2 fél
-// 4 és 2 fél
-// 3 és 2 fél
-// 2 és 2 fél
